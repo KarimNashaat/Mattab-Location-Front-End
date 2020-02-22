@@ -64,6 +64,7 @@ const Register = props => {
                     {/* Img Input  */}
                     {/* <div className="form-group input-group text-center"> */}
                     <div className="preview text-center">
+                        <div className="onTop">
                         <img className="preview-img text-center" src={src} alt="Preview Image" width="150" height="150" />
                         <div className="browse-button text-center">
                             <i className="fa fa-pencil-alt"></i>
@@ -83,6 +84,7 @@ const Register = props => {
                         </div>
                         <span className="Error"></span>
                         {deleteImg}
+                        </div>
                     </div>
                     {/* </div> */}
                     {/* Img Input Finished */}
