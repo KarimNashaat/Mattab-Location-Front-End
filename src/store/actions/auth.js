@@ -88,6 +88,7 @@ export const login = (email, password) => {
             email,
             password,
         }
+        console.log(process.env.API_URL)
         console.log(process.env.REACT_APP_API_URL)
         const url = process.env.REACT_APP_API_URL + "/user/login"
         axios.post(url,req)
