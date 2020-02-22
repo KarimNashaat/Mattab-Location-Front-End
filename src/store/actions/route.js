@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes'
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '../../axios_auth'
 
 export const fetchRouteStart = () => {
     return {

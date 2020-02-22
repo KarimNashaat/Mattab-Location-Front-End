@@ -1,7 +1,7 @@
 import * as actionsTypes from './actionTypes'
-// import axios from '../../axios_auth'
+import axios from '../../axios_auth'
 import { store } from '../../index'
-import axios from 'axios'
+// import axios from 'axios'
 
 export const startRecording = (from, to) => {
     return dispatch => {
