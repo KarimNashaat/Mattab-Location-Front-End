@@ -159,7 +159,6 @@ export const unsaveRoute = (route) => {
 }
 
 export const deleteRoute = (route) => {
-    console.log("delete")
     return dispatch => {
         axios.delete(process.env.API_URL +"/routes/"+ route._id)
                 .then(res => {
