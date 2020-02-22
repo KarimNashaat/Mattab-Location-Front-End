@@ -6,6 +6,7 @@ import Spinner from '../UI/Spinner/Spinner'
 import * as actions from '../../store/actions'
 import defaultAvatar from '../../assets/images/user-avatar-placeholder.png'
 import classes from './Profile.css'
+
 const Profile = props => {
 
     let profileCard = <Spinner />

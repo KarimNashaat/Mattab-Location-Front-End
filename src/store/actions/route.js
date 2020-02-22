@@ -25,7 +25,7 @@ export const fetchRoutes = (body) => {
     return dispatch => {
         dispatch(fetchRouteStart())
 
-        let url = "http://localhost:3030/routes"
+        let url = process.env.API_URL + "/routes"
         axios.get(url, {params: {...body}})
         .then(res => {
             dispatch(fetchRouteSuccess(res.data.reverse()))

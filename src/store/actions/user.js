@@ -25,7 +25,7 @@ export const fetchUser = (id) => {
     return dispatch => {
         dispatch(fetchUserStart())
 
-        let url = "http://localhost:3030/user/" +id
+        let url = process.env.API_URL + "/user/" +id
         axios.get(url)
         .then(res => {
             console.log(res)
