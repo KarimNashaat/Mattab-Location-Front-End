@@ -28,6 +28,7 @@ const Register = props => {
     let src = defaultAvatar
     if (img) {
         src = img
+        console.log("img" +img)
         deleteImg = <div className="deleteImage text-center" onClick={() => {
             setImg(null) 
             setDefaultAvatar(avatar)}}> X </div>
@@ -76,7 +77,7 @@ const Register = props => {
                                 buttonText='Choose images'
                                 onChange={onDrop}
                                 singleImage={true}
-                                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg', '.heic']}
                                 maxFileSize={5242880}
                                 style={{ display: 'none' }}
                             />
