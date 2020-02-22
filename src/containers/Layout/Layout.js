@@ -5,7 +5,7 @@ import Footer from '../../components/UI/Footer/Footer'
 const Layout = props => {
     return (
         <React.Fragment>
-            <div className="container-fluid d-flex flex-column h-100 px-0">
+            <div className="container-fluid d-flex flex-column px-0">
                 <div className="row no-gutters">
                     <div className="col">
                     <Navbar></Navbar>

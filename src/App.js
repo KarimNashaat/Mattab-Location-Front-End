@@ -60,7 +60,7 @@ function App(props) {
   }
   return (
     <div className="App">
-      <Playground/>
+      {/* <Playground/> */}
       <AuthModalContext.Provider value={{ toggleModal, logout: props.logout, isAuthanticated: props.isAuthanticated }}>
         <Layout>
           {routes}
