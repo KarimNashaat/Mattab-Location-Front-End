@@ -18,7 +18,7 @@ export const startRecording = (from, to) => {
                 long: longitude
             }
 
-            let url = "http://localhost:3030/user/recording"
+            let url = "/user/recording"
             const req = {
                 from,
                 to,
@@ -102,7 +102,7 @@ export const saveRecord = () => {
                     type: actionsTypes.START_SAVING_RECORD,
                 })
 
-                let url = process.env.REACT_APP_API_URL + "/user/recording"
+                let url = "/user/recording"
                 axios.delete(url)
                     .then(res => {
                         dispatch(endRecording(true))
@@ -120,7 +120,7 @@ export const saveRecord = () => {
 export const deleteRecord = () => {
     return dispatch => {
 
-        let url = process.env.REACT_APP_API_URL + "/user/recording"
+        let url ="/user/recording"
 
         axios.delete(url)
             .then(res => {
@@ -135,7 +135,7 @@ export const deleteRecord = () => {
 export const checkRecording = () => {
     return dispatch => {
 
-        let url = "http://localhost:3030/user/recording"
+        let url = "/user/recording"
         axios.get(url)
             .then(res => {
                 console.log(res)
@@ -154,7 +154,7 @@ export const checkRecording = () => {
 
 export const addCheckpoint = () => {
     return dispatch => {
-        let url = "http://localhost:3030/user/recording"
+        let url = "/user/recording"
 
         let latitude = 0
         let longitude = 0
@@ -183,7 +183,7 @@ export const addCheckpoint = () => {
 
 export const deleteCheckpoint = (id) => {
     return dispatch => {
-        let url = "http://localhost:3030/user/recording/" + id
+        let url = "/user/recording/" + id
 
         axios.patch(url)
             .then(res => {
