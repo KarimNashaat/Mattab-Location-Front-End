@@ -25,7 +25,7 @@ export const fetchUser = (id) => {
     return dispatch => {
         dispatch(fetchUserStart())
 
-        let url = process.env.API_URL + "/user/" +id
+        let url = process.env.REACT_APP_API_URL + "/user/" +id
         axios.get(url)
         .then(res => {
             console.log(res)

@@ -65,7 +65,7 @@ export const signUp = (email, password, name, job, phone, birthday, profilePictu
         formData.append('userData',JSON.stringify(req))
         formData.append('avatar',profilePicture)
 
-        let url = process.env.API_URL + "/user/signup"
+        let url = process.env.REACT_APP_API_URL + "/user/signup"
 
         axios.post(url,formData)
             .then(res => {
@@ -88,8 +88,8 @@ export const login = (email, password) => {
             email,
             password,
         }
-        console.log(process.env.API_URL)
-        const url = process.env.API_URL + "/user/login"
+        console.log(process.env.REACT_APP_API_URL)
+        const url = process.env.REACT_APP_API_URL + "/user/login"
         axios.post(url,req)
             .then(res => {
                 console.log(res)
@@ -112,7 +112,7 @@ export const onTrySignIn = () => {
             return dispatch(logOut())
         }
         else {
-            axios.get(process.env.API_URL +"/user/auto-login")
+            axios.get(process.env.REACT_APP_API_URL +"/user/auto-login")
                 .then(res => {
                     dispatch(authSuccess(res.data))
                 })
@@ -127,7 +127,7 @@ export const saveRoute = (route) => {
     console.log("Save")
     console.log(route)
     return dispatch => {
-        axios.post(process.env.API_URL +"/user/savedroutes",  route)
+        axios.post(process.env.REACT_APP_API_URL +"/user/savedroutes",  route)
                 .then(res => {
                     console.log(res)
                     dispatch({
@@ -144,7 +144,7 @@ export const saveRoute = (route) => {
 export const unsaveRoute = (route) => {
     console.log("UnSave")
     return dispatch => {
-        axios.delete(process.env.API_URL +"/user/savedroutes/"+ route._id)
+        axios.delete(process.env.REACT_APP_API_URL +"/user/savedroutes/"+ route._id)
                 .then(res => {
                     console.log(res)
                     dispatch({
@@ -160,7 +160,7 @@ export const unsaveRoute = (route) => {
 
 export const deleteRoute = (route) => {
     return dispatch => {
-        axios.delete(process.env.API_URL +"/routes/"+ route._id)
+        axios.delete(process.env.REACT_APP_API_URL +"/routes/"+ route._id)
                 .then(res => {
                     console.log(res)
                     dispatch({

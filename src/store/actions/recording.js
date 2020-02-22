@@ -82,7 +82,7 @@ export const toggleSaveModal = () => {
 export const saveRecord = () => {
     return (dispatch, getState) => {
 
-        let url = process.env.API_URL + "/routes"
+        let url = process.env.REACT_APP_API_URL + "/routes"
 
         const req = {
             from: getState().record.from,
@@ -102,7 +102,7 @@ export const saveRecord = () => {
                     type: actionsTypes.START_SAVING_RECORD,
                 })
 
-                let url = process.env.API_URL + "/user/recording"
+                let url = process.env.REACT_APP_API_URL + "/user/recording"
                 axios.delete(url)
                     .then(res => {
                         dispatch(endRecording(true))
@@ -120,7 +120,7 @@ export const saveRecord = () => {
 export const deleteRecord = () => {
     return dispatch => {
 
-        let url = process.env.API_URL + "/user/recording"
+        let url = process.env.REACT_APP_API_URL + "/user/recording"
 
         axios.delete(url)
             .then(res => {
