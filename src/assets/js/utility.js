@@ -22,15 +22,15 @@ export const distance= (lat1, lon1, lat2, lon2, unit) => {
 
 export const getDistances = (checkpoints, currLocation) => {
     const distances = []
-    const d = 0
+    let d = 0
     for(const i = 0 ; i < checkpoints.length -1; i++) {
         d = distance(checkpoints[i].lat, checkpoints[i].long, checkpoints[i+1].lat, checkpoints[i+1].long,"K"  )
         console.log(d)
         distances.push(d)
     }
 
-    const minDist = 0 ;
-    const minIndex = -1;
+    let minDist = 0 ;
+    let minIndex = -1;
     for (const i = 0 ; i < checkpoints.length; checkpoints){
         d = distances(checkpoints[i].lat, checkpoints[i].long, currLocation.lat, currLocation.long, "K")
         if(d<minDist){
