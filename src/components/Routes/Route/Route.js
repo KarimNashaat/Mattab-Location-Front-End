@@ -33,13 +33,25 @@ const Route = props => {
 
     let googleMapsLink = "https://www.google.com/maps/dir/"
 
-    for (const checkpoint of props.checkpoints) {
-        googleMapsLink = googleMapsLink + checkpoint.lat + "," + checkpoint.long + "/"
-    }
+    navigator.geolocation.getCurrentPosition((position) => {
 
-    googleMapsLink = googleMapsLink.slice(0, -1);
+        const lat = position.coords.latitude
+        const long = position.coords.longitude
 
-    console.log(googleMapsLink)
+        googleMapsLink = googleMapsLink + lat + "," + long + "/"
+
+        for (const checkpoint of props.checkpoints) {
+            googleMapsLink = googleMapsLink + checkpoint.lat + "," + checkpoint.long + "/"
+        }
+    
+        googleMapsLink = googleMapsLink.slice(0, -1);
+    
+        console.log(googleMapsLink)
+    })
+
+
+
+
 
     return (
         <article className="row" style={{ marginBottom: '10px' }}>
