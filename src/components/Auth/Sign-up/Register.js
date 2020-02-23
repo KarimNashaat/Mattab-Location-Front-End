@@ -28,7 +28,6 @@ const Register = props => {
     let src = defaultAvatar
     if (img) {
         src = img
-        console.log("img" +img)
         deleteImg = <div className="deleteImage text-center" onClick={() => {
             setImg(null) 
             setDefaultAvatar(avatar)}}> X </div>

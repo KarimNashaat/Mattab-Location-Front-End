@@ -31,6 +31,16 @@ const Route = props => {
         avatar = buffer.toString('base64')
     }
 
+    let googleMapsLink = "https://www.google.com/maps/dir/"
+
+    for (const checkpoint in props.checkpoints) {
+        googleMapsLink = googleMapsLink + checkpoint[0] + "," + checkpoint[1] + "/"
+    }
+
+    googleMapsLink = googleMapsLink.slice(0, -1);
+
+    console.log(googleMapsLink)
+
     return (
         <article className="row" style={{ marginBottom: '10px' }}>
             <Col sm='3' md='2'>

@@ -22,6 +22,7 @@ const Routes = props => {
                     from={route.from}
                     to={route.to}
                     createdAt={route.createdAt}
+                    checkpoints={route.checkpoints}
                     name={route.ownerName}
                     avatar = {route.ownerImg}
                     userProfileClicked={() => userProfileClicked(route.owner_id)}
