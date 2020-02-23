@@ -19,3 +19,33 @@ export const distance= (lat1, lon1, lat2, lon2, unit) => {
 		return dist;
 	}
 }
+
+export const getDistances = (checkpoints, currLocation) => {
+    const distances = []
+    const d = 0
+    for(const i = 0 ; i < checkpoints.length -1; i++) {
+        d = distance(checkpoints[i].lat, checkpoints[i].long, checkpoints[i+1].lat, checkpoints[i+1].long,"K"  )
+        console.log(d)
+        distances.push(d)
+    }
+
+    const minDist = 0 ;
+    const minIndex = -1;
+    for (const i = 0 ; i < checkpoints.length; checkpoints){
+        d = distances(checkpoints[i].lat, checkpoints[i].long, currLocation.lat, currLocation.long, "K")
+        if(d<minDist){
+            minDist = d
+            minIndex= i
+        }
+    }
+
+    const followingDistance = distances(checkpoints[minIndex+1].lat, checkpoints[minIndex+1].long, currLocation.lat, currLocation.long, "K")
+    let outputCheckpoints = []
+    if(followingDistance > distances[minIndex]){
+        outputCheckpoints = checkpoints.slice(minIndex)
+    }
+    {
+        outputCheckpoints = checkpoints.slice(minIndex+1)
+    }
+    return outputCheckpoints
+}

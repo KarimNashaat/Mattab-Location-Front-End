@@ -6,6 +6,7 @@ import defaultAvatar from '../../../assets/images/user-avatar-placeholder.png'
 import { connect } from 'react-redux'
 import * as actions from '../../../store/actions'
 import AuthContext from '../../../context/authContext'
+import {getDistances} from '../../../assets/js/utility' 
 
 const Route = props => {
     const authContext = useContext(AuthContext)
@@ -33,20 +34,29 @@ const Route = props => {
 
     let googleMapsLink = "https://www.google.com/maps/dir/"
 
+    let latitude = 0
+    let longitude = 0
+
     navigator.geolocation.getCurrentPosition((position) => {
 
-        const lat = position.coords.latitude
-        const long = position.coords.longitude
+        latitude = position.coords.latitude
+        longitude = position.coords.longitude
 
-        googleMapsLink = googleMapsLink + lat + "," + long + "/"
+        const initialLocation = {
+            lat: latitude,
+            long: longitude
+        }
 
-        for (const checkpoint of props.checkpoints) {
+        googleMapsLink = googleMapsLink + latitude + "," + longitude + "/"
+        const checkpoints = getDistances(props.checkpoints, initialLocation)
+
+        for (const checkpoint of checkpoints) {
             googleMapsLink = googleMapsLink + checkpoint.lat + "," + checkpoint.long + "/"
         }
     
         googleMapsLink = googleMapsLink.slice(0, -1);
     
-        console.log(googleMapsLink)
+        console.log('hi', googleMapsLink)
     })
 
 
