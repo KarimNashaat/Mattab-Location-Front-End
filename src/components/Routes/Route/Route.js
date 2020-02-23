@@ -6,7 +6,7 @@ import defaultAvatar from '../../../assets/images/user-avatar-placeholder.png'
 import { connect } from 'react-redux'
 import * as actions from '../../../store/actions'
 import AuthContext from '../../../context/authContext'
-import {getDistances} from '../../../assets/js/utility' 
+// import {getDistances} from '../../../assets/js/utility' 
 
 const Route = props => {
     const authContext = useContext(AuthContext)
@@ -32,36 +32,34 @@ const Route = props => {
         avatar = buffer.toString('base64')
     }
 
-    let googleMapsLink = "https://www.google.com/maps/dir/"
+    const goClickHandler = () => {
+        console.log('here')
+        let googleMapsLink = "https://www.google.com/maps/dir/"
 
-    let latitude = 0
-    let longitude = 0
+        let latitude = 0
+        let longitude = 0
 
-    navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition((position) => {
 
-        latitude = position.coords.latitude
-        longitude = position.coords.longitude
+            latitude = position.coords.latitude
+            longitude = position.coords.longitude
 
-        const initialLocation = {
-            lat: latitude,
-            long: longitude
-        }
+            const initialLocation = {
+                lat: latitude,
+                long: longitude
+            }
 
-        googleMapsLink = googleMapsLink + latitude + "," + longitude + "/"
-        const checkpoints = getDistances(props.checkpoints, initialLocation)
+            googleMapsLink = googleMapsLink + latitude + "," + longitude + "/"
 
-        for (const checkpoint of checkpoints) {
-            googleMapsLink = googleMapsLink + checkpoint.lat + "," + checkpoint.long + "/"
-        }
-    
-        googleMapsLink = googleMapsLink.slice(0, -1);
-    
-        console.log('hi', googleMapsLink)
-    })
+            for (let checkpoint of props.checkpoints) {
+                googleMapsLink = googleMapsLink + checkpoint.lat + "," + checkpoint.long + "/"
+            }
 
+            googleMapsLink = googleMapsLink.slice(0, -1);
 
-
-
+            window.open(googleMapsLink, "_blank")
+        })
+    }
 
     return (
         <article className="row" style={{ marginBottom: '10px' }}>
@@ -84,7 +82,7 @@ const Route = props => {
                         <CardText > To: <a style={{ color: "#007bff" }}>{props.to}</a>  </CardText>
                         <div className='text-right'>
                             {redButton} {' '}
-                            <Button color="success"> Go </Button>
+                            <Button color="success" onClick={goClickHandler}> Go </Button>
                         </div>
                     </CardBody>
                 </Card>
