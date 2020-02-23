@@ -33,8 +33,8 @@ const Route = props => {
 
     let googleMapsLink = "https://www.google.com/maps/dir/"
 
-    for (const checkpoint in props.checkpoints) {
-        googleMapsLink = googleMapsLink + checkpoint[0] + "," + checkpoint[1] + "/"
+    for (const checkpoint of props.checkpoints) {
+        googleMapsLink = googleMapsLink + checkpoint.lat + "," + checkpoint.long + "/"
     }
 
     googleMapsLink = googleMapsLink.slice(0, -1);
