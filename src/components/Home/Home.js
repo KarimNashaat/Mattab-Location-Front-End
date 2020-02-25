@@ -28,6 +28,9 @@ const Intro = props => {
                     </div>
                     <br />
                     {/* <!-- By ConnerT HTML & CSS Enthusiast -->   */}
+                    <p className='text-muted'>
+                        **If you are using Safari browser, go to Setting > Safari > Block Pop-ups turn it off to enable the app to use google maps.
+                    </p>
                 </div>
             </div>
         </div>
